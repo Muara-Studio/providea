@@ -301,7 +301,8 @@
     };
     $('[data-act="cal"]', form).addEventListener('click', () => send(calUrl, 'okCal'));
     $('[data-act="wa"]', form).addEventListener('click', () => send(waUrl, 'okWa'));
-    form.addEventListener('submit', e => { e.preventDefault(); send(calUrl, 'okCal'); });
+    // meetings go through WhatsApp first (Thomas, 24 Nov 2026); the calendar invite stays as the second button
+    form.addEventListener('submit', e => { e.preventDefault(); send(waUrl, 'okWa'); });
 
     onLang(() => {
       paintDates(); paintSlots(); paintTopics(); paintSum(); check();

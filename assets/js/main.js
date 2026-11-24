@@ -1,6 +1,6 @@
 // Providea site v0.1. Fill CONFIG when the real number and booking link exist.
 const CONFIG = {
-  whatsapp: '',  // e.g. '62812xxxxxxx'; empty opens WhatsApp with the message and lets the user pick a chat
+  whatsapp: '61417593439',  // +61 417 593 439 (Thomas, 24 Nov 2026): every WhatsApp link and the meeting form go here
   booking: '',   // Google Calendar appointment link; empty scrolls to the CTA section
 };
 

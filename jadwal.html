@@ -13,7 +13,7 @@
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="icon" href="favicon-32.png" sizes="32x32" type="image/png">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
-<script>(function(d){d.classList.add("js");try{var n=(performance.getEntriesByType&&performance.getEntriesByType("navigation")[0]||{}).type;if(/[?&]intro\b/.test(location.search)||n==="reload"||!sessionStorage.getItem("pv-intro"))d.classList.add("pv-ld")}catch(e){}})(document.documentElement)</script>
+<script>(function(d){d.classList.add("js");try{var T=localStorage.getItem("pv-theme"),L=localStorage.getItem("pv-lang");d.dataset.theme=T==="light"?"light":"dark";if(L!=="id"){d.lang="en";d.classList.add("pv-lang-wait");setTimeout(function(){d.classList.remove("pv-lang-wait")},1500)}}catch(e){d.dataset.theme="dark"}try{var n=(performance.getEntriesByType&&performance.getEntriesByType("navigation")[0]||{}).type;if(/[?&]intro\b/.test(location.search)||n==="reload"||!sessionStorage.getItem("pv-intro"))d.classList.add("pv-ld")}catch(e){}})(document.documentElement)</script>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/css/style.css">
@@ -126,8 +126,8 @@
       <div class="bk-field"><label for="bk-note"><span data-en="Note">Catatan</span><span class="opt" data-en="(optional)">(opsional)</span></label><textarea id="bk-note" name="note" maxlength="500" rows="3" placeholder="Misalnya: target Anda, website yang ada sekarang, atau pertanyaan." data-en-placeholder="For example: your goals, your current website or a question."></textarea></div>
       <p class="bk-sum" data-sum aria-live="polite"><svg class="ico" aria-hidden="true"><use href="#i-cal"/></svg><span class="txt"></span></p>
       <div class="bk-actions">
-        <button type="button" class="bk-btn go" data-act="cal"><svg aria-hidden="true"><use href="#i-cal"/></svg><span data-en="Send Google Calendar invite">Kirim undangan Google Calendar</span></button>
         <button type="button" class="bk-btn wa" data-act="wa"><svg aria-hidden="true"><use href="#i-wa"/></svg><span data-en="Confirm on WhatsApp">Konfirmasi lewat WhatsApp</span></button>
+        <button type="button" class="bk-btn go" data-act="cal"><svg aria-hidden="true"><use href="#i-cal"/></svg><span data-en="Send Google Calendar invite">Kirim undangan Google Calendar</span></button>
       </div>
       <p class="bk-status" data-status role="status"></p>
       <p class="bk-note" data-en="This site stores none of your data. Both buttons only open Google Calendar or WhatsApp with the details above.">Website ini tidak menyimpan data Anda. Kedua tombol hanya membuka Google Calendar atau WhatsApp dengan isian di atas.</p>

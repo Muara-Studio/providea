@@ -214,3 +214,6 @@ html.pv-ld body::before{content:"";position:fixed;inset:0;z-index:300;background
 .bento video,.case-hero video{display:block;width:100%;height:100%;object-fit:cover;background:var(--night)}
 .b6,.b7{grid-column:span 3;aspect-ratio:4/3}
 @media (max-width:900px){.b6,.b7{grid-column:span 1}}
+
+/* English default (24 Nov 2026): the head script hides the page until lang.js has swapped the text */
+html.pv-lang-wait body{opacity:0}

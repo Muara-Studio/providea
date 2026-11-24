@@ -12,9 +12,10 @@
   // Strings made here follow <html lang>: lang.js sets it on load, applyLang below keeps it current
   const isEn = () => root.lang === 'en';
 
-  /* Theme: saved choice (pv-theme), else the system preference. Icons crossfade in CSS. */
+  /* Theme: saved choice (pv-theme), else dark (default since 24 Nov 2026, Thomas). The inline head script
+     sets it before first paint; this repeats it in case that script could not read storage. */
   const savedTheme = store.get('pv-theme');
-  if (savedTheme === 'light' || savedTheme === 'dark') root.dataset.theme = savedTheme;
+  root.dataset.theme = savedTheme === 'light' ? 'light' : 'dark';
   const sysDark = matchMedia('(prefers-color-scheme: dark)');
   const isDark = () => (root.dataset.theme ? root.dataset.theme === 'dark' : sysDark.matches);
   const paintTheme = () => {
@@ -36,7 +37,7 @@
   const langHooks = []; // re-render of text made by this file, run on every language change
   const dds = $$('.lang-dd');
   let lang = store.get('pv-lang');
-  if (lang !== 'id' && lang !== 'en') lang = 'id';
+  if (lang !== 'id' && lang !== 'en') lang = 'en'; // English by default since 24 Nov 2026
   const opts = dd => $$('[role=option]', dd);
   const paintLang = () => dds.forEach(dd => {
     $('.lang-cur', dd).textContent = lang.toUpperCase();

@@ -57,10 +57,12 @@
     apply(cur);
   };
 
-  // On load: only English needs work, the HTML already holds Indonesian
-  const start = saved();
-  if (start) { cur = start; root.lang = start; root.dataset.lang = start; }
+  // On load: only English needs work, the HTML already holds Indonesian. English is the default since
+  // 24 Nov 2026 (Thomas); a saved choice wins. The head script hides the page (pv-lang-wait) until this ran.
+  const start = saved() || 'en';
+  cur = start; root.lang = start; root.dataset.lang = start;
   if (cur === 'en') apply('en');
+  root.classList.remove('pv-lang-wait');
 
   // shell.js raises this after the dropdown choice (it has already stored it)
   window.addEventListener('pv:lang', e => set(e.detail));
