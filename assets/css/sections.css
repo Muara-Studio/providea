@@ -125,10 +125,13 @@
 
 /* ---------- Phone and small tablet ---------- */
 @media (max-width:900px){
-  /* Pillar cards on a phone: no sticky stack and no depth dimming. Each card scrolls past in full,
-     so its gallery is never hidden under the next card. */
+  /* Pillar cards on a phone (25 Nov 2026): the sticky stack is back. main.js sets --stick so a card taller
+     than the screen sticks only once its bottom is in view: the whole card (gallery included) scrolls past
+     and stays readable, then the next card slides over it while it shrinks and dims a little. */
   .stack{gap:16px;padding:24px 0 56px}
-  .scard{position:relative;top:auto;scale:1;filter:none;gap:22px}
+  .scard{position:sticky;top:var(--stick,calc(72px + var(--i)*14px));gap:22px;transform-origin:50% 100%;
+    scale:calc(1 - var(--p,0)*.05);filter:brightness(calc(1 - var(--p,0)*.32))}
+  .gcar:active .gtrack{animation-play-state:paused}
   .scard h3{font-size:clamp(28px,8.4vw,36px)}
   .scard .num{font-size:clamp(34px,10vw,48px)}
   .scard .cols{gap:16px;padding-top:16px}
@@ -174,3 +177,6 @@
   .pbar{margin-top:16px}
   .poc{padding:14px;font-size:13px}
 }
+
+/* phone stack, reduced motion */
+@media (max-width:900px) and (prefers-reduced-motion:reduce){.scard{position:relative;top:auto;scale:1;filter:none}}

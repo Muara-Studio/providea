@@ -66,6 +66,14 @@ const depth = () => {
   });
 };
 if (cards.length) { addEventListener('scroll', () => { if (!ticking) { ticking = true; requestAnimationFrame(depth); } }, { passive: true }); depth(); }
+// Phone (<=900px): a card taller than the screen sticks only when its bottom is in view (--stick), so the
+// full card scrolls past before the next one covers it. Recomputed on resize and after images load.
+const phone = matchMedia('(max-width:900px)');
+const stick = () => cards.forEach((c, i) => {
+  if (!phone.matches) return c.style.removeProperty('--stick');
+  c.style.setProperty('--stick', Math.round(Math.min(72 + i * 14, innerHeight - c.offsetHeight - 12)) + 'px');
+});
+if (cards.length) { stick(); addEventListener('load', stick); addEventListener('resize', () => requestAnimationFrame(stick)); phone.addEventListener('change', stick); }
 $$('[data-year]').forEach(y => y.textContent = new Date().getFullYear());
 
 // Case-page clips: load only near the viewport, play while visible, pause off screen.
